@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gridline — One system, three directions</title>
+<meta name="description" content="Gridline is an international trade group. Finance, logistics and trading — three independent brands forming a full-cycle international trade system.">
+<link rel="canonical" href="https://gridline.group/">
+<meta name="theme-color" content="#f1f2f2">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gridline.group/">
+<meta property="og:title" content="Gridline — One system, three directions">
+<meta property="og:description" content="Finance, logistics and trading — three independent brands forming a full-cycle international trade system.">
+<meta property="og:image" content="https://gridline.group/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preload" href="fonts/AeonikPro-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/AeonikPro-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Gridline",
+  "legalName": "GRIDLINE POLAND Sp. z o.o.",
+  "url": "https://gridline.group/",
+  "email": "office@gridline.group",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ul. Ostrobramska 101A, lok. 301",
+    "postalCode": "04-041",
+    "addressLocality": "Warszawa",
+    "addressCountry": "PL"
+  }
+}
+</script>
+
+<style>
+/* ─────────────────────────────────────────────
+   Gridline — brand system
+   Colors, type scale and shape logic follow
+   Gridline Brand Book (v1).
+   ───────────────────────────────────────────── */
+
+@font-face{
+  font-family:"Aeonik Pro";
+  src:url("fonts/AeonikPro-Regular.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"Aeonik Pro";
+  src:url("fonts/AeonikPro-Medium.woff2") format("woff2");
+  font-weight:500;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"JetBrains Mono";
+  src:url("fonts/JetBrainsMono-Medium.woff2") format("woff2");
+  font-weight:500;font-style:normal;font-display:swap;
+}
+
+:root{
+  /* palette */
+  --white:#ffffff;
+  --light:#f1f2f2;
+  --mid:#d1d3d4;
+  --dark:#414042;
+  --black:#000104;
+  --orange:#f7941d;
+
+  /* type */
+  --sans:"Aeonik Pro","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  /* layout */
+  --gutter:clamp(20px,4.6vw,72px);
+  --maxw:1560px;
+  --rule:1px solid rgba(0,1,4,.14);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--light);
+  color:var(--black);
+  font-family:var(--sans);
+  font-weight:500;                /* Medium = default for 95% of type */
+  font-size:clamp(15px,1.02vw,17px);
+  line-height:1.2;
+  letter-spacing:-.02em;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+i,em{font-style:normal}            /* italics are not part of the system */
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+::selection{background:var(--orange);color:var(--black)}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+section[id]{scroll-margin-top:clamp(66px,5.6vw,88px)}
+
+/* mono tag / label — uppercase only, per brand book */
+.tag{
+  font-family:var(--mono);font-weight:500;
+  font-size:clamp(10px,.72vw,12px);
+  line-height:1.1;letter-spacing:0;
+  text-transform:uppercase;
+}
+.pill{
+  display:inline-block;
+  padding:.5em .85em .42em;
+  border-radius:.5em;              /* R = N/4 of the pill height */
+  white-space:nowrap;
+}
+.pill--active{background:var(--orange);color:var(--black)}
+.pill--soft{background:var(--mid);color:var(--black)}
+.pill--solid{background:var(--black);color:var(--white)}
+
+/* ── header ─────────────────────────────── */
+.hd{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s;
+  border-bottom:1px solid transparent;
+}
+.hd.is-stuck{
+  background:rgba(241,242,242,.82);
+  backdrop-filter:saturate(1.6) blur(14px);
+  -webkit-backdrop-filter:saturate(1.6) blur(14px);
+  border-bottom-color:rgba(0,1,4,.1);
+}
+.hd__in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:clamp(62px,5.4vw,84px)}
+.hd__logo{width:clamp(116px,10.4vw,150px);color:var(--black)}
+.hd__logo svg{width:100%;height:auto}
+
+.btn{
+  display:inline-flex;align-items:center;gap:.7em;
+  font-family:var(--mono);font-weight:500;text-transform:uppercase;
+  font-size:clamp(10px,.72vw,12px);letter-spacing:0;
+  background:var(--orange);color:var(--black);
+  padding:.95em 1.35em .85em;
+  border-radius:99px;border:0;cursor:pointer;
+  transition:transform .25s cubic-bezier(.2,.7,.3,1),background .25s;
+}
+.btn:hover{background:#ffa63c;transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn--ghost{background:transparent;color:var(--black);box-shadow:inset 0 0 0 1px rgba(0,1,4,.28)}
+.btn--ghost:hover{background:var(--black);color:var(--white);box-shadow:none}
+.btn--light{background:var(--white);color:var(--black)}
+.btn--light:hover{background:var(--light)}
+
+/* ── hero ───────────────────────────────── */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding-top:clamp(96px,10vw,150px);
+  padding-bottom:clamp(28px,3.4vw,52px);
+  overflow:hidden;
+}
+/* generative container pattern — built in code, unique on every load */
+.pattern{
+  position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.62;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 72%,transparent 97%);
+  mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 72%,transparent 97%);
+}
+.lane{position:absolute;left:0;width:100%;overflow:hidden}
+.lane__track{display:flex;position:absolute;top:0;left:0;height:100%;will-change:transform}
+.box{height:100%;background:var(--mid);flex:none}
+
+.hero__in{position:relative;z-index:1;width:100%}
+.hero__top{
+  display:flex;flex-wrap:wrap;gap:14px 28px;
+  align-items:baseline;color:var(--dark);
+  margin-bottom:clamp(28px,4.6vw,64px);
+}
+.hero__top .dot{width:5px;height:5px;border-radius:99px;background:var(--orange);display:inline-block;margin-bottom:.15em}
+
+/* the wordmark itself is the display headline */
+.hero__mark{width:100%;color:var(--black)}
+.hero__mark svg{width:100%;height:auto}
+
+.hero__foot{
+  display:grid;grid-template-columns:1fr;gap:clamp(20px,2.6vw,40px);
+  margin-top:clamp(26px,3.4vw,48px);
+  padding-top:clamp(20px,2.4vw,32px);
+  border-top:var(--rule);
+}
+.hero__claim{
+  font-size:clamp(21px,2.42vw,38px);
+  line-height:1.1;letter-spacing:-.02em;max-width:14ch;
+}
+.hero__note{color:var(--dark);max-width:46ch;line-height:1.35}
+@media (min-width:900px){
+  .hero__foot{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end}
+  .hero__note{justify-self:end;text-align:left}
+}
+
+/* ── directions ─────────────────────────── */
+.dir{background:var(--white);padding:clamp(64px,8vw,132px) 0 clamp(40px,5vw,72px)}
+.dir__head{
+  display:grid;grid-template-columns:1fr;gap:clamp(18px,2.4vw,40px);
+  margin-bottom:clamp(44px,6vw,96px);
+}
+@media (min-width:900px){
+  .dir__head{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:start}
+}
+h2{
+  margin:0;font-weight:500;
+  font-size:clamp(31px,4.5vw,68px);
+  line-height:1;letter-spacing:-.02em;max-width:13ch;
+}
+.dir__lead{margin:0;font-size:clamp(16px,1.28vw,21px);line-height:1.3;max-width:40ch}
+.dir__lead .m{color:var(--dark)}
+
+.row{
+  display:grid;align-items:start;
+  grid-template-columns:auto 1fr;
+  gap:16px clamp(14px,1.8vw,28px);
+  padding:clamp(22px,2.6vw,36px) 0;
+  border-top:var(--rule);
+  position:relative;
+}
+.row:last-child{border-bottom:var(--rule)}
+.row__badge{
+  width:clamp(34px,2.9vw,42px);height:clamp(34px,2.9vw,42px);
+  border-radius:calc(clamp(34px,2.9vw,42px) / 4);   /* R = N/4 */
+  background:var(--black);color:var(--white);
+  display:grid;place-items:center;
+}
+.row__badge svg{width:56%;height:56%}
+.row__name{
+  font-size:clamp(27px,3.4vw,52px);line-height:1;letter-spacing:-.02em;
+  align-self:start;margin:-.06em 0 0;
+}
+.row__status{grid-column:2}
+.row__text{grid-column:2;color:var(--dark);line-height:1.35;max-width:52ch}
+@media (min-width:900px){
+  .row{grid-template-columns:auto minmax(0,1fr) minmax(140px,auto) minmax(0,1.05fr);align-items:center;gap:clamp(16px,2.2vw,36px)}
+  .row__status,.row__text{grid-column:auto}
+  .row__text{max-width:44ch}
+  .row__name{align-self:center;margin:0}
+}
+.row__name,.row__badge{transition:transform .4s cubic-bezier(.2,.7,.3,1)}
+.row:hover .row__badge{transform:translateX(4px)}
+
+/* ── contact ────────────────────────────── */
+.ct{background:var(--black);color:var(--white);padding:clamp(64px,8vw,132px) 0 clamp(40px,4vw,64px)}
+.ct .tag{color:var(--mid)}
+.ct__grid{display:grid;grid-template-columns:1fr;gap:clamp(36px,5vw,72px)}
+@media (min-width:960px){.ct__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}}
+.ct__h{
+  margin:0 0 clamp(22px,2.6vw,34px);font-weight:500;
+  font-size:clamp(31px,4.5vw,68px);line-height:1;letter-spacing:-.02em;max-width:12ch;
+}
+.mailto{
+  display:inline-flex;align-items:center;gap:.5em;
+  font-size:clamp(19px,2.1vw,32px);line-height:1.1;letter-spacing:-.02em;
+  color:var(--white);padding-bottom:.12em;
+  border-bottom:1px solid rgba(255,255,255,.34);
+  transition:color .25s,border-color .25s;
+  word-break:break-word;
+}
+.mailto:hover{color:var(--orange);border-bottom-color:var(--orange)}
+.mailto svg{width:.62em;height:.62em;flex:none}
+
+.info{margin-top:clamp(34px,4vw,60px);display:grid;gap:26px;grid-template-columns:1fr}
+@media (min-width:620px){.info{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.info__k{color:var(--mid);margin-bottom:.85em;display:block}
+.info__v{line-height:1.35;color:var(--white)}
+.info__v span{display:block;color:rgba(255,255,255,.62)}
+
+/* form */
+.form{display:grid;gap:12px;align-content:start}
+.field{position:relative}
+.field input,.field textarea{
+  width:100%;font:inherit;font-weight:500;letter-spacing:-.02em;
+  color:var(--white);background:transparent;
+  border:1px solid rgba(255,255,255,.22);border-radius:12px;
+  padding:15px 16px;outline:none;resize:vertical;
+  transition:border-color .2s,background .2s;
+}
+.field textarea{min-height:104px}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.42)}
+.field input:focus,.field textarea:focus{border-color:var(--orange);background:rgba(255,255,255,.04)}
+.form__row{display:grid;gap:12px}
+@media (min-width:520px){.form__row{grid-template-columns:1fr 1fr}}
+.form__foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:4px}
+.form__msg{color:var(--mid);line-height:1.3}
+.form__msg.is-err{color:var(--orange)}
+
+/* ── footer ─────────────────────────────── */
+.ft{background:var(--black);color:rgba(255,255,255,.5);padding:0 0 clamp(24px,3vw,40px)}
+.ft__in{
+  display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;align-items:center;
+  padding-top:clamp(22px,2.4vw,32px);border-top:1px solid rgba(255,255,255,.14);
+}
+.ft__mark{width:clamp(26px,2.4vw,34px);color:rgba(255,255,255,.5)}
+.ft__mark svg{width:100%;height:auto}
+
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .lane__track{animation:none !important}
+  *{transition-duration:.01ms !important}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ── header ─────────────────────────────────────────── -->
+<header class="hd" id="hd">
+  <div class="wrap hd__in">
+    <a class="hd__logo" href="#top" aria-label="Gridline — home">
+      <svg viewBox="0 0 612.75 86.89" fill="currentColor" fill-rule="evenodd" role="img" aria-hidden="true"><g transform="translate(-852.17 -522.53)"><path d="M873.30 538.28 L1063.43 538.28 L1063.43 524.19 L873.30 524.19 C861.65 524.19 852.17 533.67 852.17 545.32 L852.17 587.57 C852.17 599.22 861.65 608.70 873.30 608.70 L1024.10 608.70 L1049.35 583.45 L1049.35 608.70 L1063.43 608.70 L1063.43 566.45 L1056.39 559.40 L1014.14 559.40 L1014.14 573.49 L1039.39 573.49 L1018.26 594.61 L873.30 594.61 C869.41 594.61 866.25 591.45 866.25 587.57 L866.25 545.32 C866.25 541.44 869.41 538.28 873.30 538.28 Z"/><path d="M1091.65 566.46 C1091.65 540.76 1107.58 523.50 1132.68 523.50 C1152.24 523.50 1166.48 535.08 1169.01 552.95 L1154.65 552.95 C1152.12 542.20 1144.03 535.69 1132.32 535.69 C1116.27 535.69 1105.89 548.36 1105.89 566.46 C1105.89 584.56 1116.03 597.23 1132.20 597.23 C1145.23 597.23 1155.73 589.87 1156.46 576.23 L1156.46 574.18 L1133.05 574.18 L1133.05 562.48 L1169.74 562.48 L1169.74 608.70 L1158.99 608.70 L1157.79 597.36 C1153.68 603.39 1144.99 609.42 1131.60 609.42 C1107.95 609.42 1091.65 592.17 1091.65 566.46 Z"/><path d="M1211.37 546.91 L1211.37 559.10 L1205.58 559.10 C1193.99 559.10 1190.25 568.15 1190.25 577.69 L1190.25 608.70 L1177.22 608.70 L1177.22 546.91 L1188.80 546.91 L1190.25 556.20 C1193.39 551.01 1198.34 546.91 1208.47 546.91 L1211.37 546.91 Z"/><path d="M1212.82 530.38 C1212.82 525.79 1216.32 522.53 1220.78 522.53 C1225.25 522.53 1228.75 525.79 1228.75 530.38 C1228.75 534.96 1225.25 538.22 1220.78 538.22 C1216.32 538.22 1212.82 534.96 1212.82 530.38 Z M1214.15 546.91 L1227.18 546.91 L1227.18 608.70 L1214.15 608.70 L1214.15 546.91 Z"/><path d="M1281.61 524.19 L1294.64 524.19 L1294.64 608.70 L1283.30 608.70 L1281.73 599.41 C1277.75 604.84 1271.35 609.43 1261.57 609.43 C1244.80 609.43 1232.37 597.60 1232.37 577.81 C1232.37 558.74 1244.80 546.19 1261.57 546.19 C1270.99 546.19 1277.62 550.05 1281.61 555.48 L1281.61 524.19 Z M1281.73 578.05 C1281.73 565.74 1274.61 557.29 1263.75 557.29 C1252.89 557.29 1245.77 565.74 1245.77 577.80 C1245.77 589.99 1252.89 598.44 1263.75 598.44 C1274.61 598.44 1281.73 589.99 1281.73 578.05 Z"/><path d="M1302.12 524.19 L1315.16 524.19 L1315.16 608.69 L1302.12 608.70 L1302.12 524.19 Z"/><path d="M1321.31 530.38 C1321.31 525.79 1324.81 522.53 1329.27 522.53 C1333.74 522.53 1337.24 525.79 1337.24 530.38 C1337.24 534.96 1333.74 538.22 1329.27 538.22 C1324.81 538.22 1321.31 534.96 1321.31 530.38 Z M1322.64 546.91 L1335.67 546.91 L1335.67 608.70 L1322.64 608.70 L1322.64 546.91 Z"/><path d="M1400.60 574.30 L1400.60 608.70 L1387.44 608.70 L1387.44 575.39 C1387.44 563.69 1382.49 557.41 1372.72 557.41 C1362.34 557.41 1356.19 565.01 1356.19 577.57 L1356.19 608.70 L1343.15 608.70 L1343.15 546.91 L1354.50 546.91 L1355.94 555.00 C1359.81 550.17 1365.72 546.19 1375.74 546.19 C1389.37 546.19 1400.60 553.67 1400.60 574.30 Z"/><path d="M1404.33 577.92 C1404.33 558.86 1416.53 546.19 1434.75 546.19 C1452.61 546.19 1464.56 557.53 1464.92 575.63 C1464.92 577.20 1464.80 578.89 1464.56 580.58 L1417.97 580.58 L1417.97 581.43 C1418.34 591.93 1424.97 598.80 1435.23 598.80 C1443.20 598.80 1448.99 594.82 1450.80 587.94 L1463.83 587.94 C1461.66 600.13 1451.28 609.43 1435.96 609.43 C1416.53 609.42 1404.33 596.87 1404.33 577.92 Z M1451.40 571.05 C1450.32 561.87 1443.92 556.68 1434.87 556.68 C1426.54 556.68 1419.42 562.24 1418.46 571.05 L1451.40 571.05 Z"/></g></svg>
+    </a>
+    <a class="btn" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ── hero ───────────────────────────────────────────── -->
+<section class="hero">
+  <div class="pattern" id="pattern" aria-hidden="true"></div>
+
+  <div class="wrap hero__in">
+    <div class="hero__top tag">
+      <span>International trade group</span>
+      <span><span class="dot"></span> Warsaw, Poland</span>
+    </div>
+
+    <h1 class="hero__mark">
+      <span class="sr">Gridline</span>
+      <svg viewBox="0 0 373.26 86.89" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><g transform="translate(-1091.65 -522.53)"><path d="M1091.65 566.46 C1091.65 540.76 1107.58 523.50 1132.68 523.50 C1152.24 523.50 1166.48 535.08 1169.01 552.95 L1154.65 552.95 C1152.12 542.20 1144.03 535.69 1132.32 535.69 C1116.27 535.69 1105.89 548.36 1105.89 566.46 C1105.89 584.56 1116.03 597.23 1132.20 597.23 C1145.23 597.23 1155.73 589.87 1156.46 576.23 L1156.46 574.18 L1133.05 574.18 L1133.05 562.48 L1169.74 562.48 L1169.74 608.70 L1158.99 608.70 L1157.79 597.36 C1153.68 603.39 1144.99 609.42 1131.60 609.42 C1107.95 609.42 1091.65 592.17 1091.65 566.46 Z"/><path d="M1211.37 546.91 L1211.37 559.10 L1205.58 559.10 C1193.99 559.10 1190.25 568.15 1190.25 577.69 L1190.25 608.70 L1177.22 608.70 L1177.22 546.91 L1188.80 546.91 L1190.25 556.20 C1193.39 551.01 1198.34 546.91 1208.47 546.91 L1211.37 546.91 Z"/><path d="M1212.82 530.38 C1212.82 525.79 1216.32 522.53 1220.78 522.53 C1225.25 522.53 1228.75 525.79 1228.75 530.38 C1228.75 534.96 1225.25 538.22 1220.78 538.22 C1216.32 538.22 1212.82 534.96 1212.82 530.38 Z M1214.15 546.91 L1227.18 546.91 L1227.18 608.70 L1214.15 608.70 L1214.15 546.91 Z"/><path d="M1281.61 524.19 L1294.64 524.19 L1294.64 608.70 L1283.30 608.70 L1281.73 599.41 C1277.75 604.84 1271.35 609.43 1261.57 609.43 C1244.80 609.43 1232.37 597.60 1232.37 577.81 C1232.37 558.74 1244.80 546.19 1261.57 546.19 C1270.99 546.19 1277.62 550.05 1281.61 555.48 L1281.61 524.19 Z M1281.73 578.05 C1281.73 565.74 1274.61 557.29 1263.75 557.29 C1252.89 557.29 1245.77 565.74 1245.77 577.80 C1245.77 589.99 1252.89 598.44 1263.75 598.44 C1274.61 598.44 1281.73 589.99 1281.73 578.05 Z"/><path d="M1302.12 524.19 L1315.16 524.19 L1315.16 608.69 L1302.12 608.70 L1302.12 524.19 Z"/><path d="M1321.31 530.38 C1321.31 525.79 1324.81 522.53 1329.27 522.53 C1333.74 522.53 1337.24 525.79 1337.24 530.38 C1337.24 534.96 1333.74 538.22 1329.27 538.22 C1324.81 538.22 1321.31 534.96 1321.31 530.38 Z M1322.64 546.91 L1335.67 546.91 L1335.67 608.70 L1322.64 608.70 L1322.64 546.91 Z"/><path d="M1400.60 574.30 L1400.60 608.70 L1387.44 608.70 L1387.44 575.39 C1387.44 563.69 1382.49 557.41 1372.72 557.41 C1362.34 557.41 1356.19 565.01 1356.19 577.57 L1356.19 608.70 L1343.15 608.70 L1343.15 546.91 L1354.50 546.91 L1355.94 555.00 C1359.81 550.17 1365.72 546.19 1375.74 546.19 C1389.37 546.19 1400.60 553.67 1400.60 574.30 Z"/><path d="M1404.33 577.92 C1404.33 558.86 1416.53 546.19 1434.75 546.19 C1452.61 546.19 1464.56 557.53 1464.92 575.63 C1464.92 577.20 1464.80 578.89 1464.56 580.58 L1417.97 580.58 L1417.97 581.43 C1418.34 591.93 1424.97 598.80 1435.23 598.80 C1443.20 598.80 1448.99 594.82 1450.80 587.94 L1463.83 587.94 C1461.66 600.13 1451.28 609.43 1435.96 609.43 C1416.53 609.42 1404.33 596.87 1404.33 577.92 Z M1451.40 571.05 C1450.32 561.87 1443.92 556.68 1434.87 556.68 C1426.54 556.68 1419.42 562.24 1418.46 571.05 L1451.40 571.05 Z"/></g></svg>
+    </h1>
+
+    <div class="hero__foot">
+      <p class="hero__claim">One system,<br>three directions.</p>
+      <p class="hero__note">Finance, logistics and trading. Each direction is an independent brand and team. Together, they form a full-cycle international trade system.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── directions ─────────────────────────────────────── -->
+<section class="dir" id="directions">
+  <div class="wrap">
+    <div class="dir__head">
+      <h2>One system, three directions.</h2>
+      <p class="dir__lead">Each direction is an independent brand and team.<br class="sr"> <span class="m">Together, they form a full-cycle international trade system — from financing a deal to delivering the cargo.</span></p>
+    </div>
+
+    <div class="rows">
+
+      <article class="row">
+        <div class="row__badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+        </div>
+        <h3 class="row__name">Finance</h3>
+        <div class="row__status"><span class="tag pill pill--active">Active</span></div>
+        <p class="row__text">Trade finance and leasing. Structured funding for supply contracts across the group.</p>
+      </article>
+
+      <article class="row">
+        <div class="row__badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M4 12h16"/><path d="M12 4c2.4 2.4 3.6 5.1 3.6 8s-1.2 5.6-3.6 8c-2.4-2.4-3.6-5.1-3.6-8S9.6 6.4 12 4Z"/></svg>
+        </div>
+        <h3 class="row__name">Logistics</h3>
+        <div class="row__status"><span class="tag pill pill--soft">Launching</span></div>
+        <p class="row__text">Ocean and air freight, multimodal shipping, customs. Built on the group’s internal logistics system.</p>
+      </article>
+
+      <article class="row">
+        <div class="row__badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 4v16"/><path d="M4.9 8.1l14.2 7.8"/><path d="M19.1 8.1L4.9 15.9"/></svg>
+        </div>
+        <h3 class="row__name">Trading</h3>
+        <div class="row__status"><span class="tag pill pill--solid">First deals</span></div>
+        <p class="row__text">Contract-based procurement and supply for specific deals. From components to raw materials and equipment, delivered manufacturer-to-client.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── contact ────────────────────────────────────────── -->
+<section class="ct" id="contact">
+  <div class="wrap">
+    <div class="ct__grid">
+
+      <div>
+        <p class="tag" style="margin:0 0 clamp(20px,2.4vw,32px)">Get in touch</p>
+        <h2 class="ct__h">Let’s talk business.</h2>
+
+        <a class="mailto" href="mailto:office@gridline.group">
+          office@gridline.group
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+        </a>
+
+        <div class="info">
+          <div>
+            <span class="tag info__k">Office</span>
+            <p class="info__v" style="margin:0">
+              ul. Ostrobramska 101A, lok. 301<br>
+              04-041 Warszawa<span>Poland</span>
+            </p>
+          </div>
+          <div>
+            <span class="tag info__k">Legal entity</span>
+            <p class="info__v" style="margin:0">
+              GRIDLINE POLAND<br>Sp. z o.o.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="tag" style="margin:0 0 clamp(20px,2.4vw,32px)">Send a message</p>
+        <form class="form" id="form" novalidate>
+          <div class="form__row">
+            <div class="field"><label class="sr" for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" placeholder="Name" autocomplete="name" required></div>
+            <div class="field"><label class="sr" for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" placeholder="Email" autocomplete="email" required></div>
+          </div>
+          <div class="field"><label class="sr" for="f-msg">Message</label>
+            <textarea id="f-msg" name="message" placeholder="How can we help?" required></textarea></div>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="sr" aria-hidden="true">
+          <div class="form__foot">
+            <button class="btn btn--light" type="submit" id="send">Send message</button>
+            <p class="form__msg tag" id="msg" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap ft__in">
+    <p class="tag" style="margin:0">© <span id="yr">2026</span> GRIDLINE POLAND Sp. z o.o. — All rights reserved</p>
+    <div class="ft__mark" aria-hidden="true">
+      <svg viewBox="0 0 211.26 84.51" fill="currentColor" fill-rule="evenodd"><g transform="translate(-852.17 -524.19)"><path d="M873.30 538.28 L1063.43 538.28 L1063.43 524.19 L873.30 524.19 C861.65 524.19 852.17 533.67 852.17 545.32 L852.17 587.57 C852.17 599.22 861.65 608.70 873.30 608.70 L1024.10 608.70 L1049.35 583.45 L1049.35 608.70 L1063.43 608.70 L1063.43 566.45 L1056.39 559.40 L1014.14 559.40 L1014.14 573.49 L1039.39 573.49 L1018.26 594.61 L873.30 594.61 C869.41 594.61 866.25 591.45 866.25 587.57 L866.25 545.32 C866.25 541.44 869.41 538.28 873.30 538.28 Z"/></g></svg>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── header state ─────────────────────────────────────── */
+var hd = document.getElementById('hd');
+function onScroll(){ hd.classList.toggle('is-stuck', window.scrollY > 12); }
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ── generative container pattern ─────────────────────────
+   Containers in plan view, arranged across horizontal lanes
+   and set in continuous motion. Layout is randomised on
+   every load: no two visits are identical.               */
+(function(){
+  var host  = document.getElementById('pattern');
+  if(!host) return;
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var style = document.createElement('style');
+  document.head.appendChild(style);
+
+  function build(){
+    host.textContent = '';
+    var css = '';
+    var W = host.clientWidth, H = host.clientHeight;
+    if(!W || !H) return;
+
+    var LANES  = W < 700 ? 5 : 6;
+    var pitch  = H / LANES;
+    var laneH  = pitch * 0.5;                           // lane height in px, with air between lanes
+
+    for(var i = 0; i < LANES; i++){
+      var lane = document.createElement('div');
+      lane.className   = 'lane';
+      lane.style.top    = (i * pitch + (pitch - laneH) / 2).toFixed(1) + 'px';
+      lane.style.height = laneH.toFixed(1) + 'px';
+
+      var track = document.createElement('div');
+      track.className = 'lane__track';
+
+      // one segment of containers, then a clone of it — seamless loop
+      var seg = document.createElement('div'), segW = 0, target = W * 1.4;
+      seg.style.display = 'flex';
+      seg.style.height  = '100%';
+      while(segW < target){
+        var w   = (Math.random() < .42 ? 5 : 2.5) * laneH;   // 40ft = 5:1, 20ft = 2.5:1 in plan view
+        var gap = (1.6 + Math.random() * 4.2) * laneH;
+        var box = document.createElement('div');
+        box.className = 'box';
+        box.style.width        = w.toFixed(1) + 'px';
+        box.style.marginRight  = gap.toFixed(1) + 'px';
+        box.style.borderRadius = (laneH / 4).toFixed(1) + 'px';   // R = N/4
+        seg.appendChild(box);
+        segW += w + gap;
+      }
+      track.appendChild(seg);
+      track.appendChild(seg.cloneNode(true));
+      track.style.width = (segW * 2).toFixed(1) + 'px';
+
+      if(!still){
+        var dur = 74 + Math.random() * 66;                       // slow, unhurried drift
+        var dir = i % 2 ? 1 : -1;                                // alternating lanes
+        var nm  = 'drift' + i;
+        css += '@keyframes ' + nm + '{from{transform:translate3d(' + (dir < 0 ? '0px' : '-' + segW.toFixed(1) + 'px') + ',0,0)}'
+             + 'to{transform:translate3d(' + (dir < 0 ? '-' + segW.toFixed(1) + 'px' : '0px') + ',0,0)}}';
+        track.style.animation      = nm + ' ' + dur.toFixed(1) + 's linear infinite';
+        track.style.animationDelay = (-Math.random() * dur).toFixed(1) + 's';
+      }else{
+        track.style.transform = 'translate3d(-' + (segW * Math.random()).toFixed(1) + 'px,0,0)';
+      }
+
+      lane.appendChild(track);
+      host.appendChild(lane);
+    }
+    style.textContent = css;
+  }
+
+  build();
+
+  // rebuild on real width changes only — ignore mobile URL-bar height jitter
+  var w = innerWidth, t;
+  addEventListener('resize', function(){
+    if(Math.abs(innerWidth - w) < 40) return;
+    w = innerWidth;
+    clearTimeout(t); t = setTimeout(build, 200);
+  });
+})();
+
+/* ── contact form ─────────────────────────────────────────
+   Set FORM_ENDPOINT to a POST endpoint (Formspree, Apps
+   Script, …) to receive submissions in the background.
+   While it is empty the form composes an email instead, so
+   the page never loses a message.                        */
+var FORM_ENDPOINT = '';
+
+(function(){
+  var f = document.getElementById('form');
+  if(!f) return;
+  var msg = document.getElementById('msg');
+  var btn = document.getElementById('send');
+
+  function say(t, err){ msg.textContent = t; msg.classList.toggle('is-err', !!err); }
+
+  var el = f.elements;
+
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(el._gotcha.value) return;                       // honeypot
+
+    var name = el.name.value.trim(),
+        mail = el.email.value.trim(),
+        text = el.message.value.trim();
+
+    if(!name || !mail || !text){ say('Please fill in all fields.', true); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)){ say('Please check the email address.', true); return; }
+
+    if(!FORM_ENDPOINT){
+      var body = 'Name: ' + name + '\nEmail: ' + mail + '\n\n' + text;
+      location.href = 'mailto:office@gridline.group'
+        + '?subject=' + encodeURIComponent('Website enquiry — ' + name)
+        + '&body=' + encodeURIComponent(body);
+      say('Opening your email app…');
+      return;
+    }
+
+    btn.disabled = true; say('Sending…');
+    fetch(FORM_ENDPOINT, {
+      method:'POST',
+      headers:{'Accept':'application/json'},
+      body:new FormData(f)
+    }).then(function(r){
+      if(!r.ok) throw new Error(r.status);
+      f.reset(); say('Thank you. We will get back to you shortly.');
+    }).catch(function(){
+      say('Could not send. Please email office@gridline.group', true);
+    }).then(function(){ btn.disabled = false; });
+  });
+})();
+</script>
+
+</body>
+</html>
