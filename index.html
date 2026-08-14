@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gridline — One system, three directions</title>
-<meta name="description" content="Gridline is a trading group. Finance, logistics and trading — three independent teams forming a full-cycle international trade system.">
+<meta name="description" content="Gridline is an international trading group. Finance, logistics and trading — three independent teams forming a full-cycle international trade system.">
 <link rel="canonical" href="https://gridline.group/">
 <meta name="theme-color" content="#f1f2f2">
 
@@ -224,7 +224,7 @@ h2{
 .row__text{grid-column:2;color:var(--dark);line-height:1.35;max-width:52ch}
 @media (min-width:900px){
   .row{grid-template-columns:auto minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:clamp(16px,2.2vw,36px)}
-  .row__text{grid-column:auto;max-width:44ch}
+  .row__text{grid-column:auto;max-width:44ch;justify-self:end}
   .row__name{align-self:center;margin:0}
 }
 .row__name,.row__badge{transition:transform .4s cubic-bezier(.2,.7,.3,1)}
@@ -314,7 +314,7 @@ h2{
 
   <div class="wrap hero__in">
     <div class="hero__top tag">
-      <span>Trading group</span>
+      <span>International trading group</span>
       <span><span class="dot"></span> Warsaw, Poland</span>
     </div>
 
@@ -337,6 +337,14 @@ h2{
 
       <article class="row">
         <div class="row__badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 4v16"/><path d="M4.9 8.1l14.2 7.8"/><path d="M19.1 8.1L4.9 15.9"/></svg>
+        </div>
+        <h3 class="row__name">Trading</h3>
+        <p class="row__text">Contract-based procurement and supply for specific deals. From components to raw materials and equipment, delivered manufacturer-to-client.</p>
+      </article>
+
+      <article class="row">
+        <div class="row__badge" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
         </div>
         <h3 class="row__name">Finance</h3>
@@ -349,14 +357,6 @@ h2{
         </div>
         <h3 class="row__name">Logistics</h3>
         <p class="row__text">Ocean and air freight, multimodal shipping, customs. Built on the group’s internal logistics system.</p>
-      </article>
-
-      <article class="row">
-        <div class="row__badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 4v16"/><path d="M4.9 8.1l14.2 7.8"/><path d="M19.1 8.1L4.9 15.9"/></svg>
-        </div>
-        <h3 class="row__name">Trading</h3>
-        <p class="row__text">Contract-based procurement and supply for specific deals. From components to raw materials and equipment, delivered manufacturer-to-client.</p>
       </article>
 
     </div>
